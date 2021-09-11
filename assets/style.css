@@ -1,0 +1,373 @@
+body {
+    margin:0;
+    /*padding:0;*/
+    /*max-height:100vh;*/
+    /*background-color: #e0e0e0;*/
+    /*  background-image: url("pexels-tom-fisk-8985371.jpg");*/
+    /*  margin: 3%;*/
+}
+
+.title_background_image {
+  border-bottom: 2px solid red;
+}
+
+.title {
+  gap:3px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  margin-left: 200px;
+  margin-top: -350px;
+}
+
+.adjust_header_content {
+  gap:3px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.adjust_city_name {
+  gap:20px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0, 0.3);
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 130px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px 1px rgb(0 0 0);
+}
+
+.main_background_image {
+  margin-top: 132px;
+}
+
+.overlap {
+  position: relative;
+}
+
+.adjust_temperature_card {
+  width: 360px;
+  position: absolute;
+  top: 150px;
+  margin-left: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+  background-color: rgba(0, 0, 255, 0.2);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  height: 150px;
+}
+
+.temperature_row {
+  display: flex;
+  flex-direction: row;
+  margin-top: -20px;
+}
+
+.gif_image {
+  display: flex;
+  flex-direction: column;
+}
+
+.overlap_gif {
+  position: relative;
+}
+
+.gif_position {
+  margin-top: -17px;
+}
+
+.fahrenheit {
+  display: flex;
+  flex-direction: row;
+  margin-top: -10px;
+  font-style: italic;
+}
+
+.fahrenheit_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.status {
+  display: flex;
+  flex-direction: row;
+  margin-top: -35px;
+  margin-left: 15px;
+  font-style: italic;
+}
+.rainy_status {
+  display: flex;
+  flex-direction: column;
+}
+
+.date_time {
+  display: flex;
+  flex-direction: row;
+  font-style: normal;
+}
+
+.time {
+  display: flex;
+  flex-direction: row;
+  font-style: normal;
+  margin-top: -18px;
+}
+
+.date_time_time {
+  display: flex;
+  flex-direction: column;
+  margin-left: -225px;
+  margin-top: 25px;
+}
+
+.date_time_row {
+  display: flex;
+  flex-direction: row;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
+.sun_rise {
+   display: flex;
+   flex-direction: row;
+   font-style: normal;
+}
+
+.rise_value {
+   display: flex;
+   flex-direction: row;
+   font-style: normal;
+   margin-top: -5px;
+}
+
+.sun_rise_value {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.sun_set {
+   display: flex;
+   flex-direction: row;
+   font-style: normal;
+}
+
+.set_value {
+   display: flex;
+   flex-direction: row;
+   font-style: normal;
+   margin-top: -5px;
+}
+
+.sun_set_value {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+
+.sun {
+  display: flex;
+  flex-direction: row;
+  gap:20px;
+}
+
+.sun_rise_set_column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 35px;
+}
+
+.max {
+  display: flex;
+  flex-direction: row;
+  font-style: normal;
+}
+.min {
+  display: flex;
+  flex-direction: row;
+  font-style: normal;
+  margin-top: -12px;
+}
+
+.max_min {
+  display: flex;
+  flex-direction: column;
+  margin-left: -20px;
+  margin-top: 50px;
+}
+
+.max_min_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.adjust_humidity_card {
+  width: 220px;
+  position: absolute;
+  top: 150px;
+  margin-left: 560px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+  background-color: rgba(0, 0, 255, 0.2);
+  border-left: 2px white solid;
+  height: 150px;
+}
+
+.humidity {
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  font-style: italic;
+  margin-top: -10px;
+}
+
+.humidity_value {
+   display: flex;
+   flex-direction: row;
+   margin-top: -30px;
+}
+
+.humidity_value_flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.adjust_wind_card {
+  width: 300px;
+  position: absolute;
+  top: 150px;
+  margin-left: 782px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: left;
+  background-color: rgba(0, 0, 255, 0.2);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-left: 2px white solid;
+  height: 150px;
+}
+
+.turbine_image {
+  margin-top: -25px;
+}
+
+.wind {
+   display: flex;
+   flex-direction: row;
+   font-style: italic;
+}
+.speed {
+   display: flex;
+   flex-direction: row;
+   font-style: normal;
+}
+
+.wind_speed {
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+}
+
+.direction {
+   display: flex;
+   flex-direction: row;
+   font-style: italic;
+}
+.direction_value {
+   display: flex;
+   flex-direction: row;
+   font-style: normal;
+}
+
+.wind_direction {
+   display: flex;
+   flex-direction: row;
+   gap: 32px;
+   margin-top: -13px;
+}
+
+.wind_speed_direction {
+   display: flex;
+   flex-direction: column;
+}
+
+.air {
+   display: flex;
+   flex-direction: row;
+   font-style: italic;
+}
+.air_value {
+   display: flex;
+   flex-direction: row;
+   font-style: normal;
+}
+
+.air_quality {
+   display: flex;
+   flex-direction: row;
+   gap: 20px;
+}
+
+.pressure {
+   display: flex;
+   flex-direction: row;
+   font-style: italic;
+}
+.pressure_value {
+   display: flex;
+   flex-direction: row;
+   font-style: normal;
+}
+
+.air_pressure {
+   display: flex;
+   flex-direction: row;
+   gap: 30px;
+   margin-top: -13px;
+}
+
+.air_and_pressure {
+   display: flex;
+   flex-direction: column;
+}
+
+.wind_content {
+   display: flex;
+   flex-direction: column;
+}
+
+.image_wind {
+   display: flex;
+   flex-direction: row;
+   gap: 20px;
+}
+
+.container-display {
+  display: flex;
+}
+
+.flex-display {
+  display: flex;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+}
