@@ -10,33 +10,6 @@ from datetime import datetime
 
 app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}])
 
-tabs_styles = {
-    "display": "flex",
-    "flex-direction": "row",
-}
-tab_style = {
-    "color": 'white',
-    "fontSize": '.9vw',
-    'fontWeight': 'bold',
-    "backgroundColor": 'rgba(242, 242, 242, 0.0)',
-    'border-bottom': '1px white solid',
-
-}
-
-tab_selected_style = {
-    "fontSize": '.9vw',
-    "color": 'white',
-    'fontWeight': 'bold',
-    "backgroundColor": 'rgba(242, 242, 242, 0.0)',
-    'border-bottom': '1px red solid',
-    # 'width': '125px'
-}
-
-
-air_quality = html.Div('Hello')
-charts = html.Div('Hello')
-map_location = html.Div('Hello')
-
 app.layout = html.Div([
     html.Div([
         dcc.Interval(id = 'update_title_background_image',
