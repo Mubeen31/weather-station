@@ -34,19 +34,21 @@ app.layout = html.Div([
     ], className = 'title'),
 
     html.Div(id = 'header_content'),
+    html.Div(id = 'main_background_image',
+             className = 'main_background_image'),
     html.Div([
-        html.Div(id = 'main_background_image',
-                 className = 'main_background_image'),
-        html.Div(id = 'temperature_card',
-                 className = 'adjust_temperature_card'
-                 ),
-        html.Div(id = 'humidity_card',
-                 className = 'adjust_humidity_card'
-                 ),
-        html.Div(id = 'wind_card',
-                 className = 'adjust_wind_card'
-                 )
-    ], className = 'overlap')
+        html.Div([
+            html.Div(id = 'temperature_card',
+                     className = 'adjust_temperature_card'
+                     ),
+            html.Div(id = 'humidity_card',
+                     className = 'adjust_humidity_card'
+                     ),
+            html.Div(id = 'wind_card',
+                     className = 'adjust_wind_card'
+                     )
+        ], className = 'flexbox_container'),
+    ], className = 'adjust_margin'),
 
 ], id= "mainContainer",
    style={"display": "flex", "flex-direction": "column"})
@@ -321,20 +323,19 @@ def update_graph(n_intervals):
 
      return [
         html.Div(style = {'background-image': 'url("/assets/sunny-day (1).jpg")',
-                          'height': '70vh',
                           'background-repeat': 'no-repeat',
                           'background-size': 'auto'
-                          }),
+                          },
+                 className = 'main_background_image'),
      ]
 
     elif get_temp < 21:
         return [
             html.Div(style = {'background-image': 'url("/assets/cloudy-day (1).jpg")',
-                              'height': '70vh',
                               'background-repeat': 'no-repeat',
                               'background-size': 'auto'
                               },
-                     ),
+                     className = 'main_background_image'),
 
         ]
 
@@ -390,70 +391,60 @@ def header(n_intervals):
 def background_image(n_intervals):
     if n_intervals == None or n_intervals % 10 == 1:
         img = html.Div(style = {'background-image': 'url("/assets/1.jpg")',
-                                'height': '40vh',
                                 'background-repeat': 'no-repeat',
                                 'background-size': 'auto'
                                 },
                        className = 'title_background_image'),
     elif n_intervals % 10 == 2:
         img = html.Div(style = {'background-image': 'url("/assets/2.jpg")',
-                                'height': '40vh',
                                 'background-repeat': 'no-repeat',
                                 'background-size': 'auto'
                                 },
                        className = 'title_background_image'),
     elif n_intervals % 10 == 3:
         img = html.Div(style = {'background-image': 'url("/assets/3.jpg")',
-                                'height': '40vh',
                                 'background-repeat': 'no-repeat',
                                 'background-size': 'auto'
                                 },
                        className = 'title_background_image'),
     elif n_intervals % 10 == 4:
         img = html.Div(style = {'background-image': 'url("/assets/4.jpg")',
-                                'height': '40vh',
                                 'background-repeat': 'no-repeat',
                                 'background-size': 'auto'
                                 },
                        className = 'title_background_image'),
     elif n_intervals % 10 == 5:
         img = html.Div(style = {'background-image': 'url("/assets/5.jpg")',
-                                'height': '40vh',
                                 'background-repeat': 'no-repeat',
                                 'background-size': 'auto'
                                 },
                        className = 'title_background_image'),
     elif n_intervals % 10 == 6:
         img = html.Div(style = {'background-image': 'url("/assets/6.jpg")',
-                                'height': '40vh',
                                 'background-repeat': 'no-repeat',
                                 'background-size': 'auto'
                                 },
                        className = 'title_background_image'),
     elif n_intervals % 10 == 7:
         img = html.Div(style = {'background-image': 'url("/assets/7.jpg")',
-                                'height': '40vh',
                                 'background-repeat': 'no-repeat',
                                 'background-size': 'auto'
                                 },
                        className = 'title_background_image'),
     elif n_intervals % 10 == 8:
         img = html.Div(style = {'background-image': 'url("/assets/8.jpg")',
-                                'height': '40vh',
                                 'background-repeat': 'no-repeat',
                                 'background-size': 'auto'
                                 },
                        className = 'title_background_image'),
     elif n_intervals % 10 == 9:
         img = html.Div(style = {'background-image': 'url("/assets/9.jpg")',
-                                'height': '40vh',
                                 'background-repeat': 'no-repeat',
                                 'background-size': 'auto'
                                 },
                        className = 'title_background_image'),
     elif n_intervals % 10 == 0:
         img = html.Div(style = {'background-image': 'url("/assets/10.jpg")',
-                                'height': '40vh',
                                 'background-repeat': 'no-repeat',
                                 'background-size': 'auto'
                                 },

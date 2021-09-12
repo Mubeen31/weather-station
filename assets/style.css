@@ -9,6 +9,7 @@ body {
 
 .title_background_image {
   border-bottom: 2px solid red;
+  height: 300px;
 }
 
 .title {
@@ -17,7 +18,7 @@ body {
   display: flex;
   align-items: center;
   margin-left: 200px;
-  margin-top: -350px;
+  margin-top: -250px;
 }
 
 .adjust_header_content {
@@ -45,26 +46,42 @@ body {
 }
 
 .main_background_image {
-  margin-top: 132px;
+  margin-top: 16px;
+  height: 700px;
 }
 
-.overlap {
-  position: relative;
+.flexbox_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.adjust_margin {
+  margin-top: -650px;
 }
 
 .adjust_temperature_card {
   width: 360px;
-  position: absolute;
-  top: 150px;
-  margin-left: 200px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-shrink: 0;
   justify-content: center;
   background-color: rgba(0, 0, 255, 0.2);
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-radius: 4px;
+  height: 150px;
+}
+
+.adjust_humidity_card {
+  width: 360px;
+  justify-content: center;
+  background-color: rgba(0, 0, 255, 0.2);
+  border-radius: 4px;
+  height: 150px;
+}
+
+.adjust_wind_card {
+  width: 360px;
+  justify-content: center;
+  background-color: rgba(0, 0, 255, 0.2);
+  border-radius: 4px;
   height: 150px;
 }
 
@@ -205,35 +222,22 @@ body {
   display: flex;
   flex-direction: column;
   margin-left: -20px;
-  margin-top: 50px;
+  margin-top: -10px;
 }
 
 .max_min_row {
   display: flex;
   flex-direction: row;
-}
-
-.adjust_humidity_card {
-  width: 220px;
-  position: absolute;
-  top: 150px;
-  margin-left: 560px;
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  flex-shrink: 0;
   justify-content: center;
-  background-color: rgba(0, 0, 255, 0.2);
-  border-left: 2px white solid;
-  height: 150px;
 }
 
 .humidity {
   display: flex;
   flex-direction: row;
-  margin-left: 25px;
+  margin-top: 25px;
   font-style: italic;
-  margin-top: -10px;
+
 }
 
 .humidity_value {
@@ -245,23 +249,9 @@ body {
 .humidity_value_flex {
   display: flex;
   flex-direction: column;
-}
-
-.adjust_wind_card {
-  width: 300px;
-  position: absolute;
-  top: 150px;
-  margin-left: 782px;
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  flex-shrink: 0;
-  justify-content: left;
-  background-color: rgba(0, 0, 255, 0.2);
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-left: 2px white solid;
-  height: 150px;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .turbine_image {
@@ -357,6 +347,9 @@ body {
    display: flex;
    flex-direction: row;
    gap: 20px;
+   align-items: center;
+   justify-content: center;
+   margin-top: 30px;
 }
 
 .container-display {

@@ -561,15 +561,26 @@ there.
   }
     .title {
       margin-left: 10px !important;
-      margin-top: -370px !important;
+      margin-top: -280px !important;
     }
     .main_background_image {
-      margin-top: 152px !important;;
+      margin-top: 31px !important;;
 }
 
-    .adjust_tabs {
-      margin-top: 20px !important;
-  }
+.adjust_temperature_card {
+  width: 100% !important;
+  border-radius: 0px !important;
+}
+
+.adjust_humidity_card {
+  width: 100% !important;
+  border-radius: 0px !important;
+}
+
+.adjust_wind_card {
+  width: 100% !important;
+  border-radius: 0px !important;
+}
 
 
   .font_size {
@@ -597,3 +608,10 @@ there.
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {
 }
+
+/* Larger than Desktop HD */
+/*@media screen and (min-width: 1920px) {
+  .adjust_margin {
+     margin-top: -720px !important;
+}
+}*/
