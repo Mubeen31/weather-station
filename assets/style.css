@@ -254,6 +254,20 @@ body {
   margin-top: 10px;
 }
 
+.wet_image {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+
+}
+
+.humidity_wet_image {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .turbine_image {
   margin-top: -25px;
 }

@@ -157,6 +157,12 @@ def header(n_intervals):
 
     return [
         html.Div([
+            html.Img(src = app.get_asset_url('wet.png'),
+                     style = {'height': '50px'
+                              },
+                     className = 'wet_image'
+                     ),
+        html.Div([
             html.P('Humidity',
                    style = {'color': 'white',
                             'fontSize': 15,
@@ -171,6 +177,8 @@ def header(n_intervals):
                    className = 'humidity_value'
                    ),
         ], className = 'humidity_value_flex'),
+
+            ], className = 'humidity_wet_image')
 
     ]
 
