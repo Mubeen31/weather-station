@@ -1,5 +1,6 @@
 body {
     margin:0;
+    background-color: #232121;
     /*padding:0;*/
     /*max-height:100vh;*/
     /*background-color: #e0e0e0;*/
@@ -368,21 +369,18 @@ body {
 
 .adjust_forecast_card1 {
   width: 366px;
-  margin-top: 20px;
   background-color: rgba(0, 0, 255, 0.2);
   height: 150px;
 }
 
 .adjust_forecast_card2 {
   width: 366px;
-  margin-top: 20px;
   background-color: rgba(0, 0, 255, 0.2);
   height: 150px;
 }
 
 .adjust_forecast_card3 {
   width: 366px;
-  margin-top: 20px;
   background-color: rgba(0, 0, 255, 0.2);
   height: 150px;
 }
@@ -393,6 +391,10 @@ body {
   flex-wrap: wrap;
 }
 
+.forecast_container_margin {
+   margin-top: 20px;
+}
+
 .time_forecast {
   display: flex;
   flex-direction: row;
@@ -401,6 +403,7 @@ body {
 .gif_forecast {
   display: flex;
   flex-direction: row;
+  margin-left: -2px;
 }
 
 .temperature_forecast {

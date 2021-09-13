@@ -582,6 +582,10 @@ there.
   border-radius: 0px !important;
 }
 
+.forecast_container_margin {
+   margin-top: 60px !important;
+}
+
 
   .font_size {
    font-size: 13px !important;
