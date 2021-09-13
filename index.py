@@ -59,7 +59,7 @@ app.layout = html.Div([
             html.Div(id = 'weather_forecast3',
                      className = 'adjust_forecast_card3')
         ], className = 'forecast_flexbox')
-    ], className = 'forecast_container_margin')
+    ], className = 'forecast_container_margin'),
 
 ], id= "mainContainer",
    style={"display": "flex", "flex-direction": "column"})
