@@ -366,6 +366,61 @@ body {
    margin-top: 30px;
 }
 
+.adjust_forecast_card1 {
+  width: 366px;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 255, 0.2);
+  height: 150px;
+}
+
+.adjust_forecast_card2 {
+  width: 366px;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 255, 0.2);
+  height: 150px;
+}
+
+.adjust_forecast_card3 {
+  width: 366px;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 255, 0.2);
+  height: 150px;
+}
+
+.forecast_flexbox {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.time_forecast {
+  display: flex;
+  flex-direction: row;
+}
+
+.gif_forecast {
+  display: flex;
+  flex-direction: row;
+}
+
+.temperature_forecast {
+  display: flex;
+  flex-direction: row;
+}
+
+.column_forecast {
+  display: flex;
+  flex-direction: column;
+}
+
+.row_forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 25px;
+  gap: 5px;
+}
+
 .container-display {
   display: flex;
 }

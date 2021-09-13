@@ -50,8 +50,592 @@ app.layout = html.Div([
         ], className = 'flexbox_container'),
     ], className = 'adjust_margin'),
 
+    html.Div([
+        html.Div(id = 'weather_forecast1',
+                 className = 'adjust_forecast_card1'),
+html.Div(id = 'weather_forecast2',
+                 className = 'adjust_forecast_card2'),
+html.Div(id = 'weather_forecast3',
+                 className = 'adjust_forecast_card3')
+    ], className = 'forecast_flexbox')
+
 ], id= "mainContainer",
    style={"display": "flex", "flex-direction": "column"})
+
+@app.callback(Output('weather_forecast3', 'children'),
+              [Input('update_header_content', 'n_intervals')])
+def header(n_intervals):
+    header_list = ['Time', 'Humidity', 'Temperature']
+    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    get_temp = df['Temperature'].tail(1).iloc[0].astype(float)
+    get_temp_fahr = (get_temp * 9/5) + 32
+    now = datetime.now()
+    day = now.strftime('%a')
+    date = now.strftime('%d/%m/%Y')
+    time = now.strftime('%H:%M:%S')
+    sun_rise = '06:36'
+    sun_set = '19:34'
+    if n_intervals == 0:
+        raise PreventUpdate
+
+    if get_temp > 21:
+        return [
+                html.P('Worcester, United Kingdom',
+                       style = {'color': 'black',},
+                       ),
+        ]
+    elif get_temp < 21:
+        return [
+            html.Div([
+            html.Div([
+            html.P('16:00',
+                   style = {'color': 'white',
+                            'fontSize': 15,
+                            },
+                   className = 'time_forecast'
+                   ),
+            html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                     style = {'height': '40px',
+                              'width': '40px'
+                              },
+                     className = 'gif_forecast'
+                     ),
+                html.P('{0:,.0f}°C'.format(get_temp),
+                       style = {'color': 'white',
+                                'fontSize': 15,
+                                },
+                       className = 'temperature_forecast'
+                       ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('17:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('18:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('19:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('20:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('21:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('22:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('23:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+
+                ], className = 'row_forecast')
+
+        ]
+
+@app.callback(Output('weather_forecast2', 'children'),
+              [Input('update_header_content', 'n_intervals')])
+def header(n_intervals):
+    header_list = ['Time', 'Humidity', 'Temperature']
+    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    get_temp = df['Temperature'].tail(1).iloc[0].astype(float)
+    get_temp_fahr = (get_temp * 9/5) + 32
+    now = datetime.now()
+    day = now.strftime('%a')
+    date = now.strftime('%d/%m/%Y')
+    time = now.strftime('%H:%M:%S')
+    sun_rise = '06:36'
+    sun_set = '19:34'
+    if n_intervals == 0:
+        raise PreventUpdate
+
+    if get_temp > 21:
+        return [
+                html.P('Worcester, United Kingdom',
+                       style = {'color': 'black',},
+                       ),
+        ]
+    elif get_temp < 21:
+        return [
+            html.Div([
+                html.Div([
+            html.Div([
+            html.P('Now',
+                   style = {'color': 'white',
+                            'fontSize': 15,
+                            },
+                   className = 'time_forecast'
+                   ),
+            html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                     style = {'height': '40px',
+                              'width': '40px'
+                              },
+                     className = 'gif_forecast'
+                     ),
+                html.P('{0:,.0f}°C'.format(get_temp),
+                       style = {'color': 'white',
+                                'fontSize': 15,
+                                },
+                       className = 'temperature_forecast'
+                       ),
+                ], className = 'column_forecast', style = {'margin-left': '5px'}),
+                ], style = {'background-color': 'black',
+                            'height': '150px',
+                            'margin-top': '-25px',
+                            'width': '50px'}),
+                html.Div([
+                    html.P('09:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('10:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('11:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('12:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('13:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('14:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('15:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+
+                ], className = 'row_forecast')
+
+        ]
+
+@app.callback(Output('weather_forecast1', 'children'),
+              [Input('update_header_content', 'n_intervals')])
+def header(n_intervals):
+    header_list = ['Time', 'Humidity', 'Temperature']
+    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    get_temp = df['Temperature'].tail(1).iloc[0].astype(float)
+    get_temp_fahr = (get_temp * 9/5) + 32
+    now = datetime.now()
+    day = now.strftime('%a')
+    date = now.strftime('%d/%m/%Y')
+    time = now.strftime('%H:%M:%S')
+    sun_rise = '06:36'
+    sun_set = '19:34'
+    if n_intervals == 0:
+        raise PreventUpdate
+
+    if get_temp > 21:
+        return [
+                html.P('Worcester, United Kingdom',
+                       style = {'color': 'black',},
+                       ),
+        ]
+    elif get_temp < 21:
+        return [
+            html.Div([
+            html.Div([
+            html.P('00:00',
+                   style = {'color': 'white',
+                            'fontSize': 15,
+                            },
+                   className = 'time_forecast'
+                   ),
+            html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                     style = {'height': '40px',
+                              'width': '40px'
+                              },
+                     className = 'gif_forecast'
+                     ),
+                html.P('{0:,.0f}°C'.format(get_temp),
+                       style = {'color': 'white',
+                                'fontSize': 15,
+                                },
+                       className = 'temperature_forecast'
+                       ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('01:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('02:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('03:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('04:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('05:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('06:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+                html.Div([
+                    html.P('07:00',
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'time_forecast'
+                           ),
+                    html.Img(src = app.get_asset_url('gif-rain-cloud-unscreen.gif'),
+                             style = {'height': '40px',
+                                      'width': '40px'
+                                      },
+                             className = 'gif_forecast'
+                             ),
+                    html.P('{0:,.0f}°C'.format(get_temp),
+                           style = {'color': 'white',
+                                    'fontSize': 15,
+                                    },
+                           className = 'temperature_forecast'
+                           ),
+                ], className = 'column_forecast'),
+
+                ], className = 'row_forecast')
+
+        ]
 
 @app.callback(Output('wind_card', 'children'),
               [Input('update_header_content', 'n_intervals')])
