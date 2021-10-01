@@ -95,9 +95,9 @@ void loop() {
   Serial.print(photoresisterStatus);
   if(photoresisterStatus <= photoresisterValue){
     digitalWrite(pinLED, HIGH);
-    delay(1000);
-    digitalWrite(pinLED, LOW);
-    delay(1000);
+//    delay(1000);
+//    digitalWrite(pinLED, LOW);
+//    delay(1000);
     Serial.print(" , ");          // create space
     Serial.print("LED ON");
   }
@@ -110,10 +110,10 @@ void loop() {
 
 ///////wind speed///////
   revolutions=0; 
-//  rpm=0;
-//  circumferenceRpm = 0.00;
-//  divideInches = 0.00;
-//  speedOfAir = 0.00;
+  rpm=0;
+  circumferenceRpm = 0.00;
+  divideInches = 0.00;
+  speedOfAir = 0.00;
   startTime=millis();         
   attachInterrupt(digitalPinToInterrupt(interruptPin),interruptFunction,RISING);
   delay(1000);
