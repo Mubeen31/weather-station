@@ -21,23 +21,24 @@ int photoresisterValue = 300;
 ///////photoresister///////
 
 ///////wind speed///////
-int interruptPin = 2;
-float revolutions=0;
-int rpm=0; // max value 32,767 16 bit
-long  startTime=0;
-long  elapsedTime;
-int anemometerRadius = 6;    //unit is "inch"
-int diameter = 2;
-int anemometerDiameter = diameter * anemometerRadius;   //(2*6) unit is "inch"
-float piValue = 3.142;    //value of pi
-float inchesKilometer = 39370.1;
-float anemometerCircumference = anemometerDiameter * piValue;   //unit is "inch"
-float circumferenceRpm = 0.00;
-float divideInches = 0.00;
-float speedOfAir = 0.00;
-//const byte            ah3582_pin = 2;   // used for interrupt, 2 or 3 for Nano/ATmega328
-//const unsigned int    period     = 1000; // measurement period in ms
-//volatile unsigned int pulses;           // 1 per rotation, used in ISR, hence volatile
+//int interruptPin = 2;
+//float revolutions=0;
+//int rpm=0; // max value 32,767 16 bit
+//int revo = 0;
+//long  startTime=0;
+//long  elapsedTime;
+//int anemometerRadius = 6;    //unit is "inch"
+//int diameter = 2;
+//int anemometerDiameter = diameter * anemometerRadius;   //(2*6) unit is "inch"
+//float piValue = 3.142;    //value of pi
+//float inchesKilometer = 39370.1;
+//float anemometerCircumference = anemometerDiameter * piValue;   //unit is "inch"
+//float circumferenceRpm = 0.00;
+//float divideInches = 0.00;
+//float speedOfAir = 0.00;
+const byte            ah3582_pin = 2;   // used for interrupt, 2 or 3 for Nano/ATmega328
+const unsigned int    period     = 1000; // measurement period in ms
+volatile unsigned int pulses;           // 1 per rotation, used in ISR, hence volatile
 ///////wind speed///////
 
 void setup(){
@@ -60,9 +61,9 @@ void setup(){
 ///////photoresister///////
 
 ///////wind speed///////
-  pinMode(interruptPin, INPUT);           // set pin to input
-//  pinMode(ah3582_pin, INPUT); 
-//  attachInterrupt(digitalPinToInterrupt(ah3582_pin), ah3582InterruptPin, FALLING);
+//  pinMode(interruptPin, INPUT);           // set pin to input
+  pinMode(ah3582_pin, INPUT); 
+  attachInterrupt(digitalPinToInterrupt(ah3582_pin), ah3582InterruptPin, FALLING);
 ///////wind speed///////
 }
 
@@ -109,41 +110,47 @@ void loop() {
 ///////photoresister///////
 
 ///////wind speed///////
-  revolutions=0; 
-  rpm=0;
-  circumferenceRpm = 0.00;
-  divideInches = 0.00;
-  speedOfAir = 0.00;
-  startTime=millis();         
-  attachInterrupt(digitalPinToInterrupt(interruptPin),interruptFunction,RISING);
-  delay(1000);
-  detachInterrupt(interruptPin);                
-//now let's see how many counts we've had from the hall effect sensor and calc the RPM
-  elapsedTime=millis()-startTime;     //finds the time, should be very close to 1 sec
-  if(revolutions>0) {
-    rpm=(max(1, revolutions) * 60000) / elapsedTime;        //calculates rpm
-    circumferenceRpm = anemometerCircumference * rpm;       //unit is "inches per minute"
-    divideInches = circumferenceRpm / inchesKilometer;      //unit is "kilometer per minute"
-    speedOfAir = divideInches * 60;                  //unit is "kilometer per hour"
-    }
-  Serial.print(" , ");          // create space
-  Serial.print(rpm);
-  Serial.print(" , ");          // create space
-  Serial.println(speedOfAir);
-//  unsigned int pulses_read;
-//  pulses = 0; 
-//  delay(period);
-//  pulses_read = pulses;
+//  revolutions=0; 
+//  rpm=0;
+//  revo = 0;
+//  circumferenceRpm = 0.00;
+//  divideInches = 0.00;
+//  speedOfAir = 0.00;
+//  startTime=millis();         
+//  attachInterrupt(digitalPinToInterrupt(interruptPin),interruptFunction,RISING);
+//  delay(1000);
+//  detachInterrupt(interruptPin);                
+////now let's see how many counts we've had from the hall effect sensor and calc the RPM
+//  elapsedTime=millis()-startTime;     //finds the time, should be very close to 1 sec
+//  if(revolutions>0) {
+//    rpm=(max(1, revolutions) * 60000) / elapsedTime;        //calculates rpm
+//    revo = revolutions;
+//    circumferenceRpm = anemometerCircumference * rpm;       //unit is "inches per minute"
+//    divideInches = circumferenceRpm / inchesKilometer;      //unit is "kilometer per minute"
+//    speedOfAir = divideInches * 60;                  //unit is "kilometer per hour"
+//    }
 //  Serial.print(" , ");          // create space
-//  Serial.println(((unsigned long)pulses_read * 60000) / period); // RPM
+//  Serial.print(revo);
+//  Serial.print(" , ");          // create space
+//  Serial.print(rpm);
+//  Serial.print(" , ");          // create space
+//  Serial.println(speedOfAir);
+  unsigned int pulses_read;
+  pulses = 0; 
+  delay(period);
+  pulses_read = pulses;
+  Serial.print(" , ");          // create space
+  Serial.print((unsigned long)pulses_read); // revolutions
+  Serial.print(" , ");          // create space
+  Serial.println(((unsigned long)pulses_read * 60000) / period); // RPM
 ///////wind speed///////
   delay(1000);
 }
-void interruptFunction() //interrupt service routine
-{  
-  revolutions++;
-}
-//void ah3582InterruptPin()
-//{
-//   pulses++;
+//void interruptFunction() //interrupt service routine
+//{  
+//  revolutions++;
 //}
+void ah3582InterruptPin()
+{
+   pulses++;
+}
