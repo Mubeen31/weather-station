@@ -568,18 +568,18 @@ there.
 }
 
 .adjust_temperature_card {
-  width: 100% !important;
-  border-radius: 0px !important;
+  width: 95% !important;
+  border-radius: 10px !important;
 }
 
 .adjust_humidity_card {
-  width: 100% !important;
-  border-radius: 0px !important;
+  width: 95% !important;
+  border-radius: 10px !important;
 }
 
 .adjust_wind_card {
-  width: 100% !important;
-  border-radius: 0px !important;
+  width: 95% !important;
+  border-radius: 10px !important;
 }
 
 .forecast_container_margin {

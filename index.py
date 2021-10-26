@@ -67,8 +67,8 @@ app.layout = html.Div([
 @app.callback(Output('weather_forecast3', 'children'),
               [Input('update_header_content', 'n_intervals')])
 def header(n_intervals):
-    header_list = ['Time', 'Humidity', 'Temperature']
-    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    header_list = ['Time', 'Humidity', 'Temperature', 'Rain', 'Sun Set', 'Sun Rise', 'Wind Speed']
+    df = pd.read_csv('weather_data.csv', names = header_list)
     get_temp = df['Temperature'].tail(1).iloc[0].astype(float)
     get_temp_fahr = (get_temp * 9/5) + 32
     now = datetime.now()
@@ -257,8 +257,8 @@ def header(n_intervals):
 @app.callback(Output('weather_forecast2', 'children'),
               [Input('update_header_content', 'n_intervals')])
 def header(n_intervals):
-    header_list = ['Time', 'Humidity', 'Temperature']
-    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    header_list = ['Time', 'Humidity', 'Temperature', 'Rain', 'Sun Set', 'Sun Rise', 'Wind Speed']
+    df = pd.read_csv('weather_data.csv', names = header_list)
     get_temp = df['Temperature'].tail(1).iloc[0].astype(float)
     get_temp_fahr = (get_temp * 9/5) + 32
     now = datetime.now()
@@ -453,8 +453,8 @@ def header(n_intervals):
 @app.callback(Output('weather_forecast1', 'children'),
               [Input('update_header_content', 'n_intervals')])
 def header(n_intervals):
-    header_list = ['Time', 'Humidity', 'Temperature']
-    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    header_list = ['Time', 'Humidity', 'Temperature', 'Rain', 'Sun Set', 'Sun Rise', 'Wind Speed']
+    df = pd.read_csv('weather_data.csv', names = header_list)
     get_temp = df['Temperature'].tail(1).iloc[0].astype(float)
     get_temp_fahr = (get_temp * 9/5) + 32
     now = datetime.now()
@@ -643,8 +643,8 @@ def header(n_intervals):
 @app.callback(Output('wind_card', 'children'),
               [Input('update_header_content', 'n_intervals')])
 def header(n_intervals):
-    header_list = ['Time', 'Humidity', 'Temperature']
-    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    header_list = ['Time', 'Humidity', 'Temperature', 'Rain', 'Sun Set', 'Sun Rise', 'Wind Speed']
+    df = pd.read_csv('weather_data.csv', names = header_list)
     wind_speed = '10 km/h'
     direction = 'North'
     air_quality = 'Excellent'
@@ -736,8 +736,8 @@ def header(n_intervals):
 @app.callback(Output('humidity_card', 'children'),
               [Input('update_header_content', 'n_intervals')])
 def header(n_intervals):
-    header_list = ['Time', 'Humidity', 'Temperature']
-    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    header_list = ['Time', 'Humidity', 'Temperature', 'Rain', 'Sun Set', 'Sun Rise', 'Wind Speed']
+    df = pd.read_csv('weather_data.csv', names = header_list)
     get_humi = df['Humidity'].tail(1).iloc[0].astype(float)
     if n_intervals == 0:
         raise PreventUpdate
@@ -772,8 +772,8 @@ def header(n_intervals):
 @app.callback(Output('temperature_card', 'children'),
               [Input('update_header_content', 'n_intervals')])
 def header(n_intervals):
-    header_list = ['Time', 'Humidity', 'Temperature']
-    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    header_list = ['Time', 'Humidity', 'Temperature', 'Rain', 'Sun Set', 'Sun Rise', 'Wind Speed']
+    df = pd.read_csv('weather_data.csv', names = header_list)
     get_temp = df['Temperature'].tail(1).iloc[0].astype(float)
     get_temp_fahr = (get_temp * 9/5) + 32
     now = datetime.now()
@@ -908,8 +908,8 @@ def header(n_intervals):
 @app.callback(Output('main_background_image', 'children'),
               [Input('update_header_content', 'n_intervals')])
 def update_graph(n_intervals):
-    header_list = ['Time', 'Humidity', 'Temperature']
-    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    header_list = ['Time', 'Humidity', 'Temperature', 'Rain', 'Sun Set', 'Sun Rise', 'Wind Speed']
+    df = pd.read_csv('weather_data.csv', names = header_list)
     get_temp = df['Temperature'].tail(1).iloc[0].astype(float)
     if n_intervals == 0:
         raise PreventUpdate
@@ -937,8 +937,8 @@ def update_graph(n_intervals):
 @app.callback(Output('header_content', 'children'),
               [Input('update_header_content', 'n_intervals')])
 def header(n_intervals):
-    header_list = ['Time', 'Humidity', 'Temperature']
-    df = pd.read_csv('humidity_and_temperature.csv', names = header_list)
+    header_list = ['Time', 'Humidity', 'Temperature', 'Rain', 'Sun Set', 'Sun Rise', 'Wind Speed']
+    df = pd.read_csv('weather_data.csv', names = header_list)
     get_temp = df['Temperature'].tail(1).iloc[0].astype(float)
     if n_intervals == 0:
         raise PreventUpdate
