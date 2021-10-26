@@ -97,9 +97,11 @@ body {
   flex-direction: column;
 }
 
+/*
 .overlap_gif {
   position: relative;
 }
+*/
 
 .gif_position {
   margin-top: -17px;
