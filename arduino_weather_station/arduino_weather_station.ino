@@ -1,4 +1,4 @@
-///////humidity and temperature///////
+/////humidity and temperature///////
 #include "DHT.h"             // DHT sensors library
 #define dhtPin 8             // This is data pin
 #define dhtType DHT11        // This is DHT 11 sensor
@@ -41,6 +41,37 @@ float speedOfAir = 0.00;
 //volatile unsigned int pulses;           // 1 per rotation, used in ISR, hence volatile
 ///////wind speed///////
 
+//////wind direction//////
+int windDir = A2;
+int sensorExp[] = {66,84,93,126,184,244,287,406,461,599,630,702,785,827,886,945};
+float dirDeg[] = {112.5,67.5,90,157.5,135,202.5,180,22.5,45,247.5,225,337.5,0,292.5,315,270};
+char* dirCard[] = {"ESE","ENE","E","SSE","SE","SSW","S","NNE","NE","WSW","SW","NNW","N","WNW","NW","W"};
+int sensorMin[] = {63,80,89,120,175,232,273,385,438,569,613,667,746,812,869,931};
+int sensorMax[]  = {69,88,98,133,194,257,301,426,484,612,661,737,811,868,930,993};
+int incoming = 0;
+float angle = 0;
+//////wind direction//////
+
+//////Air Quality//////
+int airQuality = A3;
+int co2Level;
+//////Air Quality//////
+
+//////Atmospheric pressure and temperature//////
+#include <Wire.h>
+#include <SPI.h>
+#include <Adafruit_BMP280.h>
+
+#define BMP_SCK  (13)
+#define BMP_MISO (12)
+#define BMP_MOSI (11)
+#define BMP_CS   (10)
+
+Adafruit_BMP280 bmp; // I2C
+//Adafruit_BMP280 bmp(BMP_CS); // hardware SPI
+//Adafruit_BMP280 bmp(BMP_CS, BMP_MOSI, BMP_MISO,  BMP_SCK);
+//////Atmospheric pressure and temperature//////
+
 void setup(){
   Serial.begin(9600);
 ///////humidity and temperature///////
@@ -65,6 +96,29 @@ void setup(){
 //  pinMode(ah3582_pin, INPUT); 
 //  attachInterrupt(digitalPinToInterrupt(ah3582_pin), ah3582InterruptPin, FALLING);
 ///////wind speed///////
+
+//////Atmospheric pressure and temperature//////
+unsigned status;
+  //status = bmp.begin(BMP280_ADDRESS_ALT, BMP280_CHIPID);
+  status = bmp.begin(0x76);
+  if (!status) {
+    Serial.println(F("Could not find a valid BMP280 sensor, check wiring or "
+                      "try a different address!"));
+    Serial.print("SensorID was: 0x"); Serial.println(bmp.sensorID(),16);
+    Serial.print("        ID of 0xFF probably means a bad address, a BMP 180 or BMP 085\n");
+    Serial.print("   ID of 0x56-0x58 represents a BMP 280,\n");
+    Serial.print("        ID of 0x60 represents a BME 280.\n");
+    Serial.print("        ID of 0x61 represents a BME 680.\n");
+//    while (1) delay(10);
+  }
+
+  /* Default settings from datasheet. */
+  bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     /* Operating Mode. */
+                  Adafruit_BMP280::SAMPLING_X2,     /* Temp. oversampling */
+                  Adafruit_BMP280::SAMPLING_X16,    /* Pressure oversampling */
+                  Adafruit_BMP280::FILTER_X16,      /* Filtering. */
+                  Adafruit_BMP280::STANDBY_MS_500); /* Standby time. */    
+//////Atmospheric pressure and temperature//////
 }
 
 void loop() {
@@ -134,7 +188,8 @@ void loop() {
   Serial.print(" , ");          // create space
   Serial.print(rpm);
   Serial.print(" , ");          // create space
-  Serial.println(speedOfAir);
+  Serial.print(speedOfAir);
+  Serial.print(" , ");
 //  unsigned int pulses_read;
 //  pulses = 0; 
 //  delay(period);
@@ -144,6 +199,33 @@ void loop() {
 //  Serial.print(" , ");          // create space
 //  Serial.println(((unsigned long)pulses_read * 60000) / period); // RPM
 ///////wind speed///////
+
+//////wind direction//////
+  incoming = analogRead(windDir);
+  for(int i=0; i<=15; i++) {
+    if(incoming >= sensorMin[i] && incoming <= sensorMax[i]) {
+      angle = dirDeg[i];
+      break;
+      }
+  }
+  Serial.print(angle);
+  Serial.print(" , ");
+//////wind direction//////
+
+//////Air Quality//////
+  int airQualityData = analogRead(airQuality);
+  co2Level = airQualityData - 55;
+  co2Level = map(co2Level,0,1023,400,5000);
+  Serial.print(co2Level);
+  Serial.print(" , ");
+//////Air Quality//////
+
+//////Atmospheric pressure and temperature//////
+    Serial.print(bmp.readTemperature());
+    Serial.print(" , ");
+    Serial.println(bmp.readPressure());
+//////Atmospheric pressure and temperature//////
+ 
   delay(3000);
 }
 void interruptFunction() //interrupt service routine
